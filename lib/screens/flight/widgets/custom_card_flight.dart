@@ -3,16 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelt/screens/flight/cubit/flight_cubit.dart';
 import 'package:travelt/screens/flight/widgets/custom_flight_card_image.dart';
-import 'package:travelt/screens/hotel/manger/cubit/hotel_cubit.dart';
-import 'package:travelt/screens/hotel/manger/radio_cubit/radio_cubit.dart';
-import 'package:travelt/screens/hotel/widgets/custom_hotel_card_image.dart';
 import 'package:travelt/shared/styles/themes.dart';
 import 'package:travelt/widgets/custom_button.dart';
 import 'package:travelt/widgets/custom_date_picker.dart';
 import 'package:travelt/widgets/custom_loading_widget.dart';
 import 'package:travelt/widgets/custom_outline_form_field.dart';
-import 'package:travelt/widgets/custom_radio_list.dart';
-import 'package:travelt/widgets/custom_snack_bar.dart';
 import 'package:travelt/widgets/custom_text_field.dart';
 import 'package:travelt/widgets/custom_toast_widget.dart';
 import 'package:travelt/widgets/text_items.dart';
@@ -50,19 +45,23 @@ class CustomFlightsCard extends StatelessWidget {
                       child: CustomTextField(
                         controller: currentCityNameController,
                         type: TextInputType.text,
-                        validator: (value) {},
+                        validator: (value) {
+                          return null;
+                        },
                         label: "current city",
                         color1: defaultColor,
                         color3: defaultColor,
                         color2: defaultColor,
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     Expanded(
                       child: CustomTextField(
                         controller: destinationCityNameController,
                         type: TextInputType.text,
-                        validator: (value) {},
+                        validator: (value) {
+                          return null;
+                        },
                         label: "destination city",
                         color1: defaultColor,
                         color3: defaultColor,

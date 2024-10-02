@@ -3,17 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelt/models/hotel_model.dart';
 import 'package:travelt/screens/hotel/manger/chip_cubit/chip_cubit.dart';
 import 'package:travelt/screens/hotel/manger/cubit/hotel_cubit.dart';
-import 'package:travelt/screens/hotel/manger/radio_cubit/radio_cubit.dart';
 import 'package:travelt/screens/hotel/widgets/custom_filter_list.dart';
 import 'package:travelt/screens/hotel/widgets/custom_hotels_card.dart';
 import 'package:travelt/screens/hotel/widgets/custom_hotels_list.dart';
-import 'package:travelt/screens/house/cubit/house_cubit.dart';
-import 'package:travelt/screens/house/widget/custom_house_item.dart';
-import 'package:travelt/screens/no_details_screen.dart';
 import 'package:travelt/shared/styles/colors.dart';
 import 'package:travelt/shared/styles/themes.dart';
 import 'package:travelt/widgets/custom_loading_widget.dart';
-import 'package:travelt/widgets/navigate_items.dart';
 
 class HotelListScreen extends StatelessWidget {
   HotelListScreen({super.key, required this.hotelModel, this.sort});
@@ -24,14 +19,10 @@ class HotelListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int? persons = int.tryParse(CustomHotelsCard.personController.text);
-    // bool withChildren = RadioCubit.get(context).withChildren;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => HotelCubit(),
-        ),
-        BlocProvider(
-          create: (context) => RadioCubit(),
         ),
         BlocProvider(
           create: (context) => ChipCubit(),

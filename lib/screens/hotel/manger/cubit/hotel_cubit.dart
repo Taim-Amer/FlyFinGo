@@ -47,7 +47,6 @@ class HotelCubit extends Cubit<HotelState> {
           element.id!: element.isFavorite!,
         });
       });
-      print(favourites.toString());
       emit(HotelSuccessState(hotelModel!));
     }).catchError((onError) {
       emit(HotelErrorState(onError.toString()));
@@ -173,12 +172,7 @@ class HotelCubit extends Cubit<HotelState> {
       emit(HotelMyFavouriteErrorState(onError.toString()));
     });
   }
-//{
-//     "hotel_id":2,
-//     "room_id":3,
-//     "start":"2024-08-17",
-//     "end":"2024-08-28"
-// }
+
   CancelHotelModel?cancelHotelModel;
   void cancelHotel({
     required int hotelId,
@@ -194,7 +188,6 @@ class HotelCubit extends Cubit<HotelState> {
       cancelHotelModel = CancelHotelModel.fromJson(value);
       emit(CancelHotelSuccessState(cancelHotelModel!));
     }).catchError((onError){
-      print(onError.toString());
       emit(CancelHotelErrorState(onError.toString()));
     });
   }

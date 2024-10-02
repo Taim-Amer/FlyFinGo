@@ -2,14 +2,12 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelt/screens/hotel/manger/cubit/hotel_cubit.dart';
-import 'package:travelt/screens/hotel/manger/radio_cubit/radio_cubit.dart';
 import 'package:travelt/screens/hotel/widgets/custom_hotel_card_image.dart';
 import 'package:travelt/shared/styles/themes.dart';
 import 'package:travelt/widgets/custom_button.dart';
 import 'package:travelt/widgets/custom_date_picker.dart';
 import 'package:travelt/widgets/custom_loading_widget.dart';
 import 'package:travelt/widgets/custom_outline_form_field.dart';
-import 'package:travelt/widgets/custom_radio_list.dart';
 import 'package:travelt/widgets/custom_text_field.dart';
 import 'package:travelt/widgets/custom_toast_widget.dart';
 import 'package:travelt/widgets/text_items.dart';
@@ -89,14 +87,14 @@ class CustomHotelsCard extends StatelessWidget {
                     )
                   ],
                 ),
-                CustomRadioList(
-                  options: const [
-                    "with children",
-                    "without children"
-                  ],
-                  size: 150,
-                  controllers: childrenController,
-                ),
+                // CustomRadioList(
+                //   options: const [
+                //     "with children",
+                //     "without children"
+                //   ],
+                //   size: 150,
+                //   controllers: childrenController,
+                // ),
                 BlocBuilder<HotelCubit, HotelState>(
                   builder: (context, state){
                     return ConditionalBuilder(
@@ -105,18 +103,17 @@ class CustomHotelsCard extends StatelessWidget {
                           return CustomButton(
                                   function: () {
                                     int? personNumber = int.tryParse(personController.text);
-                                    bool withChildren = RadioCubit.get(context).withChildren;
+                                    // bool withChildren = RadioCubit.get(context).withChildren;
                                     if (personNumber != null && cityNameController.text.isNotEmpty && endController.text.isNotEmpty && startController.text.isNotEmpty) {
                                       HotelCubit.get(context).showHotel(
                                         cityName: cityNameController.text,
                                         personNumber: personNumber,
                                         start: startController.text,
                                         end: endController.text,
-                                        children: withChildren,
+                                        children: true,
                                         sort: "normal"
                                       );
                                     } else {
-                                      // const CustomSnackBarWidget(message: 'Please enter a valid details ... ',);
                                       showToast("Please enter a valid details", ToastState.WARNING);
                                     }
                                   },
